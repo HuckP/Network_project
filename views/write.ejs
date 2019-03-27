@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write</title>
+    <link rel="stylesheet" href="../stylesheets/login.css">
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css">
+</head>
+
+<body>
+    <% if(logged) { %>
+        <div class="container">
+            <div class="margin">
+                <div class="form-register" style="max-width:60%; margin:0 auto; ">
+                    <h3>글쓰기</h3>
+                    <form role="form" method="POST">
+                        <div class="form-group">
+                            <label for="subject">제목</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">내용</label>
+                            <textarea class="form-control" id="description" name="description" placeholder="내용을 입력하세요" rows="5" style="margin-bottom: 30px;" required></textarea>
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-success">
+                                    작성
+                                </button>
+                                <button type="submit" class="btn btn-danger" onclick="location.replace('/')">
+                                    취소
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="../javascripts/bootstrap.js"></script>
+    <% } else { %>
+        <script>alert("로그인 해주세요");location.replace("/login");</script>
+    <% } %>
+</body>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css">
+</head>
+
+<body>
+    <div class="container" style="padding-top: 20px;">
+        <% if(logged) { %>
+            <a href="/logout" class="btn btn-primary" style="float:right;">로그아웃</a>
+            <h3 style="float:right"><%= user_name %>님! </h3>
+        <% } else { %>
+            <a href="/login" class="btn btn-primary" style="float:right;">로그인</a>
+        <% } %>
+        <h1 class="title" style="text-align: center; padding-top:40px;">게시판</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>날짜</th>
+                </tr>
+                <tbody>
+                    <% rows.forEach(function (item,index){ %>
+                        <tr>
+                            <td>
+                                <%= item.id %>
+                            </td>
+                            <td>
+                                <a href='/detail/<%= item.id %>'><%= item.title %></a>
+                            </td>
+                            <td>
+                                <a href='/detail/<%= item.id %>'><%= item.user %></a>
+                            </td>
+                            <td>
+                                <a href='/detail/<%= item.id %>'><%= item.created %></a>
+                            </td>
+                        </tr>
+                        <% })%>
+                </tbody>
+            </thead>
+        </table>
+        <% if(logged) { %>
+            <a href="/write" class="btn btn-secondary">글쓰기</a>
+            <% } %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../javascripts/bootstrap.js"></script>
+</body>
+
+</html>

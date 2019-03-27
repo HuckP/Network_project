@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link rel="stylesheet" href="../stylesheets/login.css">
+    <link rel="stylesheet" href="../stylesheets/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="margin">
+            <div class="fuck" style="max-width:50%; margin:0 auto; ">
+                <table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
+                    <thead>
+                        <tr>
+                            <th colspan="3" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width:20%">글 제목</td>
+                            <td colspan="2"><%= rows.title %></td>
+                        </tr>
+                        <tr>
+                            <td>작성자</td>
+                            <td colspan="2"><%= rows.user %></td>
+                        </tr>
+                        <tr>
+                            <td>작성일자</td>
+                            <td colspan="2"><%= rows.created %></td>
+                        </tr>
+                        <tr>
+                            <td>내용</td>
+                            <td colspan="2" style="height: 200px; max-width:100%; text-align: left;"><%= rows.description %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group text-left">
+                    <% if(rows.user_id == user_id || user_id == "admin") { %>
+                        <button type="submit" class="btn btn-danger" onclick="location.href='/delete/<%= rows.id %>'">
+                            삭제
+                        </button>
+                    <% } %>
+                    <button type="submit" class="btn btn-primary" style="float:right;" onclick="location.href='/'">
+                        목록
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="../javascripts/bootstrap.js"></script>
+</body>
